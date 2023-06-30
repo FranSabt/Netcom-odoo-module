@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="netcom_root" name="Netcom Plus">
+        <menuitem id="netcom_departamentos_menu" name="Netcom Plus" sequence="5">
+            <menuitem id="netcom_menu_action" action="netcom_action" sequence="5" name="Netcom Action"/>
+            <menuitem id="departamentos_menu_action" action="departamentos_action" sequence="10" name="Departamentos View"/>
+        </menuitem>
+    </menuitem>
+</odoo>

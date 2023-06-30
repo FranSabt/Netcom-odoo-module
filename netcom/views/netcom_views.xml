@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Este record genera la vista general, la priemra que ve el usuario -->
+    <record id="netcom_action" model="ir.actions.act_window">
+        <field name="name">Infromacion General</field>
+        <field name="res_model">netcom</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Este genera como vemos la primera parte de la informacion en las columnas y filas -->
+    <record id="netcom_view_tree" model="ir.ui.view">
+        <field name="name">netcom.tree</field>
+        <field name="model">netcom</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" >
+                <field name="name"/>
+                <field name="short"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- PARA MI ESTE SERIA EL EQUIVALENTE AL DETALLE -->
+    <record id="netcom_view_form" model="ir.ui.view">
+        <field name="name">netcom.form</field>
+        <field name="model">netcom</field>
+        <field name="arch" type="xml">
+            <form string="Netcom - Info Importante">
+                <sheet>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name"/>
+                                    <!-- <field name="tags_id" widget="many2many_tags"/> -->
+                                </h1>
+                            </div>
+                            <!-- Cada grupo genera una vista de una clolumna -->
+                    <notebook >
+                        <page string="Description">
+                            <group >
+                                    <field name="name" />
+                                    <field name="short" />
+                                    <field name="description" />
+                                    <field name="visible" />
+                                    <field name="redirec" />
+                                    
+                            </group>
+                            <div>
+                                <span>
+                                    <button name="redireccion" string="Saber mas!" type="object" icon="fa-external-link-square" class="oe_highlight">
+                                    </button>
+                                </span>
+                            </div>
+                        </page>
+                    </notebook >
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- Barra de busqueda -->
+    <!-- <record id="estate_property_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Estate Property">
+                    <field name="name"/>
+                    <field name="property_type_id"/>
+                    <field name="postcode"/>
+                    <field name="expected_price"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area" filter_domain="[('living_area', '>=', self)]"/>
+                    <field name="facades"/>
+                    <field name="garage"/>
+                    <field name="garden"/>
+                    <filter string="Available" name="available" domain="[('state', 'in', ('new', 'offer_received'))]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Postcode" name="postcode" context="{'group_by':'postcode'}"/>
+                    </group>
+            </search>
+        </field>
+    </record>
+    -->
+</odoo>

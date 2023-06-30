@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+netcom_model,access.netcom,netcom.model_netcom,base.group_user,1,1,1,1
+departamentos_model,access.departamentos,netcom.model_departamentos,base.group_user,1,1,1,1
