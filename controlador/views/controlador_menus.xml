@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="ing_root" name="Controllador">
+        <menuitem id="netcom_ing_menu" name="ING" sequence="5"> <!-- Boton principal-->
+            <!-- Opciones del boton -->
+            <menuitem id="ing_menu_action" action="ing_action" sequence="5" name="Servicios"/>
+            <menuitem id="planes_menu_action" action="planes_action" sequence="5" name="Planes"/>
+        </menuitem>
+    </menuitem>
+</odoo>

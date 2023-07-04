@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Este record genera la vista general, la priemra que ve el usuario -->
+    <record id="planes_action" model="ir.actions.act_window">
+        <field name="name">Infromacion General</field>
+        <field name="res_model">planes</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Este genera como vemos la primera parte de la informacion en las columnas y filas -->
+    <record id="planes_view_tree" model="ir.ui.view">
+    <field name="name">netcom.tree</field>
+    <field name="model">planes</field>
+    <field name="arch" type="xml">
+        <tree string="Channel">
+            <field name="name"/>
+            <field name="nombre_lista"/>
+            <field name="carga"/>
+            <field name="descarga"/>
+        </tree>
+    </field>
+</record>
+
+    <record id="planes_view_form" model="ir.ui.view">
+    <field name="name">planes.form</field>
+    <field name="model">planes</field>
+    <field name="arch" type="xml">
+        <form string="Servicios - Detalle">
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <notebook>
+                    <page string="Description">
+                        <group>
+                            <field name="name"/>
+                            <field name="nombre_lista"/>
+                            <field name="carga"/>
+                            <field name="descarga"/>
+                            <field name="precio"/>
+                            <field name="creado_en_api" invisible="1"/>
+                            <field name="activo" invisible="1"/>
+                        </group>
+                        <div>
+                            <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight"
+                                    attrs="{'invisible': [('creado_en_api', '=', True)]}"/>
+                        </div>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+</odoo>
