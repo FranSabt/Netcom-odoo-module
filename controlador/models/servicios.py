@@ -11,7 +11,8 @@ class Servicios(models.Model):
     nombre_cliente = fields.Char("Nombre del Cliente")
     direccion_ip = fields.Char("Dire IPV4")
     plan_id = fields.Many2one('planes', string='Plan')
-    router_id = fields.Integer("Id del router conectado")
+    # router_id = fields.Integer("Id del router conectado")
+    router_id = fields.Many2one("routers", string="Router")
     estado_cliente = fields.Integer("Estado del cliente")
     creado_en_api = fields.Boolean("Creado",default=False, readonly=True)
 
@@ -21,28 +22,21 @@ class Servicios(models.Model):
     @api.depends("id_API", "hostane", "direccion_ip", "plan_id", "router_id", "estado_cliente")
     def enviar_a_api(self):
         # Obtener el registro actual
-        registro_actual = self.ensure_one()
+        # registro_actual = self.ensure_one()
         # Construir los datos a enviar a la API
 
         
-        datos = {
-            'id_API': registro_actual.id_API,
-            'hostname': registro_actual.hostname,
-            'nombre_cliente': registro_actual.nombre_cliente,
-            'direccion_ip': registro_actual.direccion_ip,
-            'plan_id': registro_actual.plan_id,
-            'router_id': registro_actual.router_id,
-            'estado_cliente': registro_actual.estado_cliente,
-        }
+        datos = {}
         
         for record in self:
             datos["hostname"] = record.hostname
             datos["direccionIp"] = record.direccion_ip
-            datos["planId"] = record.plan_id
+            datos["planId"] = record.plan_id.id_API
             datos["routerId"] = record.router_id
             datos["estado_cliente"] = record.router_id
             datos["nombreCliente"] = record.nombre_cliente
 
+        print("\n----------------")
         print("\n----------------")
         print(datos)
         print("----------------\n")

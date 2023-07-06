@@ -5,6 +5,7 @@
             <!-- Opciones del boton -->
             <menuitem id="ing_menu_action" action="ing_action" sequence="5" name="Servicios"/>
             <menuitem id="planes_menu_action" action="planes_action" sequence="5" name="Planes"/>
+            <menuitem id="Routers_menu_action" action="routers_action" sequence="5" name="Routers"/>
         </menuitem>
     </menuitem>
 </odoo>

@@ -2,50 +2,49 @@
 <odoo>
 
     <!-- Este record genera la vista general, la priemra que ve el usuario -->
-    <record id="ing_action" model="ir.actions.act_window">
+    <record id="routers_action" model="ir.actions.act_window">
         <field name="name">Infromacion General</field>
-        <field name="res_model">servicios</field>
+        <field name="res_model">routers</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- Este genera como vemos la primera parte de la informacion en las columnas y filas -->
-    <record id="ing_view_tree" model="ir.ui.view">
+    <record id="routers_view_tree" model="ir.ui.view">
     <field name="name">netcom.tree</field>
-    <field name="model">servicios</field>
+    <field name="model">routers</field>
     <field name="arch" type="xml">
         <tree string="Channel">
-            <field name="hostname"/>
-            <field name="nombre_cliente"/>
+            <field name="name"/>
+            <field name="puerto_api"/>
             <field name="direccion_ip"/>
-            <field name="plan_id"/>
-            <field name="router_id"/>
+            <field name="valid"/>
         </tree>
     </field>
 </record>
 
-    <record id="netcom_view_form" model="ir.ui.view">
-    <field name="name">netcom.form</field>
-    <field name="model">servicios</field>
+    <record id="routers_view_form" model="ir.ui.view">
+    <field name="name">planes.form</field>
+    <field name="model">routers</field>
     <field name="arch" type="xml">
         <form string="Servicios - Detalle">
             <sheet>
                 <div class="oe_title">
                     <h1>
-                        <field name="nombre_cliente"/>
+                        <field name="name"/>
                     </h1>
                 </div>
                 <notebook>
                     <page string="Description">
                         <group>
-                            <field name="hostname"/>
+                            <field name="name"/>
+                            <field name="puerto_api"/>
                             <field name="direccion_ip"/>
-                            <field name="plan_id" domain="[('creado_en_api','=',True)]"/>
-                            <field name="router_id" domain="[('valid','=',True)]"/>
-                            <field name="creado_en_api" invisible="1"/>
+                            <field name="valid"/>
+                            <!-- <field name="creado_en_api" invisible="1"/>
+                            <field name="activo" invisible="1"/> -->
                         </group>
                         <div>
-                            <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight"
-                                    attrs="{'invisible': [('creado_en_api', '=', True)]}"/>
+                            <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight" />
                         </div>
                     </page>
                 </notebook>

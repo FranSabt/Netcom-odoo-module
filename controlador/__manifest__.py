@@ -13,6 +13,7 @@
 
         "views/controlador_views.xml",
         "views/controlador_planes.xml",
+        "views/controlador_routers.xml",
         "views/controlador_menus.xml",
 
     ],
