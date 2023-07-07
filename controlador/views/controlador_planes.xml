@@ -3,7 +3,7 @@
 
     <!-- Este record genera la vista general, la priemra que ve el usuario -->
     <record id="planes_action" model="ir.actions.act_window">
-        <field name="name">Infromacion General</field>
+        <field name="name">Planes ofrecido por Netcom</field>
         <field name="res_model">planes</field>
         <field name="view_mode">tree,form</field>
     </record>
@@ -40,13 +40,11 @@
                             <field name="nombre_lista"/>
                             <field name="carga"/>
                             <field name="descarga"/>
-                            <field name="precio"/>
-                            <field name="creado_en_api" invisible="1"/>
                             <field name="activo" invisible="1"/>
                         </group>
                         <div>
                             <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight"
-                                    attrs="{'invisible': [('creado_en_api', '=', True)]}"/>
+                                    attrs="{'invisible': [('activo', '=', True)]}"/>
                         </div>
                     </page>
                 </notebook>

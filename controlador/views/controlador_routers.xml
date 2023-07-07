@@ -3,7 +3,7 @@
 
     <!-- Este record genera la vista general, la priemra que ve el usuario -->
     <record id="routers_action" model="ir.actions.act_window">
-        <field name="name">Infromacion General</field>
+        <field name="name">Routers de NetcomPlus</field>
         <field name="res_model">routers</field>
         <field name="view_mode">tree,form</field>
     </record>

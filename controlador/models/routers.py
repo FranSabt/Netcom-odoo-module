@@ -3,12 +3,18 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import requests
 
+"""
+El modulo no crea los Routers en la API.
+Sino que verifica su existencia en en BD de Router y rellena los campos si este existe.
+Evitamos de este modo que un usuario malicioso pueda llenar la BD con datos innecesarios.
+"""
+
 class Routers(models.Model):
     _name = 'routers'
     _description = "Lista de routers de Netcom Plus"
     _order = "id desc"
     _sql_constraints = [
-        ("check_precio", "CHECK(precio >= 0)", "El precio debe ser un numero positivo y major a cero."),
+        ("name", "UNIQUE(name)", "El \"Hostname\" debe ser unico."),
     ]
 
     #* Hay que colocar como name el nombre que uno desea que se refleje en la UI
@@ -22,34 +28,22 @@ class Routers(models.Model):
 
     @api.depends("name", "usuario", "password", "hostname", "puerto_api")
     def enviar_a_api(self):
-        # Obtener el registro actual
-        # registro_actual = self.ensure_one()
-        # Construir los datos a enviar a la API
 
-
-        name = ""
+        # La variable contiene el valor en el campo name (self.name) y realizar la busqueda en BD.
+        name = "" 
         for record in self:
             name = record.name
             print(record.name)
 
-
-
-        print("\n----------------")
-        print(name)
-        print("----------------\n")
-
         # Enviar los datos a la API
         url = 'http://localhost:3333/router/name/' + name
         response = requests.get(url)
-        # print(response)
-        print("\n----------------")
-        print(response.status_code)
-        print(type(response.status_code))
+
+        print("\n----------------", end="")
+        print(response.status_code, end="")
         print("----------------\n")
 
         if response.status_code == 200 or response.status_code == 201:
-            print("\n----------------")
-            print("Exclesior")
             data = response.json()
             print(data)
             for record in self:
@@ -58,12 +52,12 @@ class Routers(models.Model):
                 record.puerto_api = data["puerto_api"]
                 record.usuario = data["usuario"]
 
-                if record.id_API:
+                if record.id_API and record.direccion_ip and record.puerto_api and record.usuario:
                     record.valid = True
+                else: raise ValidationError("Alguno de los campos esta faltando en la BD!")
 
 
         else:
             print("Oh no!")
             print(response.text)
-            raise ValidationError("Oh no!")
-        
+            raise ValidationError("La respuesta de la API no ha sido valida")
