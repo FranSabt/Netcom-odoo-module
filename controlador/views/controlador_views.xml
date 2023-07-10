@@ -14,11 +14,12 @@
     <field name="model">servicios</field>
     <field name="arch" type="xml">
         <tree string="Channel">
+            <field name="name"/>
             <field name="hostname"/>
-            <field name="nombre_cliente"/>
             <field name="direccion_ip"/>
             <field name="plan_id"/>
             <field name="router_id"/>
+            <field name="estado_cliente" />
         </tree>
     </field>
 </record>
@@ -31,7 +32,7 @@
             <sheet>
                 <div class="oe_title">
                     <h1>
-                        <field name="nombre_cliente"/>
+                        <field name="name"/>
                     </h1>
                 </div>
                 <notebook>
@@ -39,13 +40,15 @@
                         <group>
                             <field name="hostname"/>
                             <field name="direccion_ip"/>
-                            <field name="plan_id" domain="[('creado_en_api','=',True)]"/>
+                            <field name="plan_id" domain="[('activo','=',True)]"/>
                             <field name="router_id" domain="[('valid','=',True)]"/>
+                            <field name="estado_cliente" />
                             <field name="creado_en_api" invisible="1"/>
+                            <field name="actualizado" string="Los datos de sistema no estan sincronizados con los datos de Router. Envie los datos para sincronzar" attrs="{'invisible': [('actualizado', '=', True)]}" />
                         </group>
                         <div>
                             <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight"
-                                    attrs="{'invisible': [('creado_en_api', '=', True)]}"/>
+                                    attrs="{'invisible': [('actualizado', '=', True)]}"/>
                         </div>
                     </page>
                     <!-- <page string="Notas">
