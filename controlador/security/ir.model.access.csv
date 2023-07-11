@@ -1,5 +1,9 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-servicios_model,access.controlador.servicios,controlador.model_servicios,base.group_user,1,1,1,1
-planes_model,access.controlador.planes,controlador.model_planes,base.group_user,1,1,1,1
-routers_model,access.controlador.routers,controlador.model_routers,base.group_user,1,1,1,1
-notas_model,access.controlador.notas,controlador.model_notas,base.group_user,1,1,1,1
+servicios_model,access.controlador.servicios,controlador.model_servicios,group_conexion_user,1,1,1,1
+servicios_model,access.controlador.servicios,controlador.model_servicios,group_conexion_manager,1,1,1,1
+planes_model,access.controlador.planes,controlador.model_planes,group_conexion_user,1,1,1,1
+planes_model,access.controlador.planes,controlador.model_planes,group_conexion_manager,1,1,1,1
+routers_model,access.controlador.routers,controlador.model_routers,group_conexion_user,1,1,1,1
+routers_model,access.controlador.routers,controlador.model_routers,group_conexion_manager,1,1,1,1
+notas_model,access.controlador.notas,controlador.model_notas,group_conexion_user,1,1,1,1
+notas_model,access.controlador.notas,controlador.model_notas,group_conexion_manager,1,1,1,1

@@ -3,13 +3,14 @@
 
 {
     "name": "Controlador",
-    "category": '',
+    "category": 'conexion',
     "depends": [
         "base",
         "web",
     ],
     "data": [
         "security/ir.model.access.csv",
+        "security/controlador_security.xml",
 
         "views/controlador_views.xml",
         "views/controlador_planes.xml",
