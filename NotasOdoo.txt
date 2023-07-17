@@ -1,0 +1,14 @@
+    # res.partner: a partner is a physical or legal entity. It can be a company, an individual or even a contact address. (Docu de odoo capitulo 8)
+
+    Basicamente este seria el  modelo (res.partner) donde estaria los clientes.
+
+    res.users (no olvidar la 's'), es el modelo donde estan los usuarios de odoo, todos los users son partner pero no todos los partner son user.
+
+    res.partner
+        ||
+        ||  Hereda a:
+        \/
+    res.users
+
+
+    ###Tener mucho cuidado con la ruta de la API

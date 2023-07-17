@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+zona_model,access.controlador.zona,controlador.model_zona,base.group_user,1,1,1,1
+routers_nas,access.controlador.nas,controlador.model_nas,base.group_user,1,1,1,1
+clientes_nas,access.controlador.clientes,controlador.model_clientes,base.group_user,1,1,1,1

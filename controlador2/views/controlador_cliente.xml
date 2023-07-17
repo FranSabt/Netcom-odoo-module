@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+            <!-- Este record genera la vista general, la priemra que ve el usuario -->
+        <record id="clientes_action" model="ir.actions.act_window">
+            <field name="name">Clientes NetcomPlus</field>
+            <field name="res_model">clientes</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    <!-- Este genera como vemos la primera parte de la informacion en las columnas y filas -->
+    <record id="clientes_view_tree" model="ir.ui.view">
+        <field name="name">netcom.tree</field>
+        <field name="model">clientes</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="client"/>
+                <field name="username" />
+                <field name="fname" />
+                <field name="lname" />
+                <field name="groupname" />
+            </tree>
+        </field>
+    </record>
+
+        <record id="view_clientes_custom_form" model="ir.ui.view">
+            <field name="name">clientes.form</field>
+            <field name="model">clientes</field>
+            <field name="arch" type="xml">
+                <form string="CLientes Form">
+                    <sheet>
+                        <group>
+                            <field name="client" />
+                            <field name="password" />
+                            <field name="username" />
+                            <field name="fname" />
+                            <field name="lname" />
+                            <field name="groupname" />
+                        </group>
+                        <notebook>
+                            <page string="Fechas de registro">
+                                <group>
+                                    <field name="create_date" />
+                                    <field name="write_date" />
+                                    <field name="creationby" />
+                                    <field name="updateby" />
+                                    <!-- <field name="creado_en_api" invisible="1"/>
+                                    <field name="activo" invisible="1"/> -->
+                                </group>
+                                <div>
+                                    <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight" />
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+Workflow de desarrollo de modulo para Netcom:
+
+Definir las vistas/modelos en Odoo
+	- campos
+	- relaciones
+
+Crear endpoints y procesamientos en NEST
+	- Procesar info (especialmente los numericos, JS y Python manejan los numero de manera distintas, hay que parsear)
+	- De momento hace envio falso
+	- Registar y recuperar
+
+Validar los datos en Odoo
+	- Antes de hacer manejos del estado del usuario, que odoo se aseguro con Nest de que los datos estan al dia en ambas BD
+	- Crear botones de envio
+

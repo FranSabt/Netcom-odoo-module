@@ -1,0 +1,15 @@
+Respecto al Odoo: 
+
+En principio vamos a trabajar sobre la tabla de clientes (realmente contactos, que agrupa clientes y proveedores), la cual se debe modificar para agregarle dos columnas que corresponden a la interoperabilidad con RADIUS, esas columnas serían el username, y la Zona ( que va a estar relacionada a un NAS, o servidor de acceso). En Odoo debemos crear una tabla de NAS o servidores de acceso, que tenga estas columnas: 
+                      | id |   nombre   |  direccion_ip  |   secret   |
+
+Asimismo, como mencioné, cada cliente debe relacionarse a una Zona, entonces hay que crear una tabla de Zonas que va a tener unas columnas que aún no hemos definido, pero en principio sería algo así:
+ | id | nombre   |  coordenadas          |  tlf_contacto     |   codigo_zona  |  NAS (referencia a la tabla de NAS) |
+
+La aplicación de Odoo debería poder: 1) Permitir crear servidores de acceso NAS, 2) permitir crear zonas asociadas a un NAS.
+
+En conclusión, cada contacto se podrá relacionar a una Zona (que consecuentemente lo asociará a un NAS) y tendrá un string correspondiente al username. Ese username debería llenarse automáticamente con el serial del equipo que se le facturó al cliente al momento de cobrarle la instalación, pero por lo pronto lo dejaremos manual.
+
+Respecto a la experiencia de usuario, en la aplicación de contactos (o la de suscripciones, que nunca he visto) debería haber un botón para crear al cliente en el NAS (que debería enviar una petición a la API de freeRADIUS tal que agregue al cliente a la BdD RADIUS), un botón para activar/suspender, y quizás un botón para cambiar el plan.
+
+Todo eso implica añadir unos endpoints adicionales a la API de freeRADIUS. De acuerdo a eso, estoy haciendo unas propuestas desde ayer, solo que las tengo en el cuaderno. Creo que lo ideal sería crear un Fork, porque me gustaría simplificar algunas cosas de la API; pero también me gustaría que la que tenemos ahorita quede por ahí por si la llegamos a necesitar
