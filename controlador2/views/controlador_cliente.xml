@@ -31,7 +31,6 @@
                     <sheet>
                         <group>
                             <field name="client" />
-                            <field name="password" />
                             <field name="username" />
                             <field name="fname" />
                             <field name="lname" />

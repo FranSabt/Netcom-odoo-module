@@ -19,17 +19,15 @@ class NAS(models.Model):
     ]
 
     #* Hay que colocar como name el nombre que uno desea que se refleje en la UI
-    name = fields.Char("Nombre del NAS", required=True)
+    name       = fields.Char("Nombre del NAS", required=True)
     ip_address = fields.Char(string="Dirección IP", required=True)
-    secret = fields.Char("Secret", required=True)
-    id_rad = fields.Char("ID de Radius", readonly=True)
-    activo = fields.Boolean(default=False)
+    secret     = fields.Char("Secret", required=True)
+    id_rad     = fields.Char("ID de Radius", readonly=True)
+    activo     = fields.Boolean(default=False, readonly=True)
 
 
-    creationdate =   fields.Char("Creado: ", readonly=True)
-    updatedate = fields.Char("Actualizado: ", readonly=True)
-    creationby = fields.Many2one('res.users', string='Created by', default=lambda self: self.env.user, readonly=True)
-    updateby = fields.Many2one('res.users', string='Updated by', default=lambda self: self.env.user, readonly=True)
+    creationby   = fields.Many2one('res.users', string='Created by', default=lambda self: self.env.user, readonly=True)
+    updateby     = fields.Many2one('res.users', string='Updated by', default=lambda self: self.env.user, readonly=True)
 
     @api.constrains('ip_address')
     def _check_ip_address(self):
@@ -46,6 +44,17 @@ class NAS(models.Model):
         name = ""
         for record in self:
             name = record.name
+
+        """
+        data = {}
+        for record in self:
+            data["name"] = record.name
+            data["ip_address"] = record.ip_address
+            data["secret"] = record.secret
+            data["id_rad"] = record.id_rad
+            data["activo"] = record.activo
+
+        """
 
         # Enviar los datos a la API
         url = 'http://localhost:3333/plan/name/' + name

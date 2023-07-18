@@ -15,6 +15,7 @@
         "views/controlador_cliente.xml",
         "views/controlador_nas.xml",
         "views/controlador_zona.xml",
+        "views/controlador_plan.xml",
         "views/controlador_menus.xml",
 
     ],

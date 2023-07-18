@@ -1,3 +1,4 @@
 Pendientes Odoo
 
 El password en odoo dejarlo como password o que el campo se muestre como "Serial Onu", --- El campo deberia ser UNICO!
+lo ideal seria recoger el seria de los que ya estan creado una vez que se asigne al cliente

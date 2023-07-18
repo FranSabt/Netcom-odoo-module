@@ -12,3 +12,6 @@
 
 
     ###Tener mucho cuidado con la ruta de la API
+
+
+    ###En el linkl se ve la vista

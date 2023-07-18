@@ -15,6 +15,7 @@ class Zona(models.Model):
     coordenadas_regex = r'^-?\d+(?:\.\d+)?, -?\d+(?:\.\d+)?$'
     coordenadas_validas = "Las coordenadas deben tener el formato 'x, y'."
 
+
     #* Hay que colocar como name el nombre que uno desea que se refleje en la UI
     name = fields.Char("Nombre del NAS", required=True)
     coord = fields.Char(string="Coordenadas", required=True, 

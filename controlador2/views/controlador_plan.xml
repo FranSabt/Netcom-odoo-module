@@ -2,50 +2,40 @@
 <odoo>
 
     <!-- Este record genera la vista general, la priemra que ve el usuario -->
-    <record id="nas_action" model="ir.actions.act_window">
-        <field name="name">NAS NetcomPlus</field>
-        <field name="res_model">nas</field>
+    <record id="plan_action" model="ir.actions.act_window">
+        <field name="name">Plan NetcomPlus</field>
+        <field name="res_model">plan</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Este genera como vemos la primera parte de la informacion en las columnas y filas -->
-    <record id="nas_view_tree" model="ir.ui.view">
+    <!-- Este genera como vemos la primera parte de la informacion en las columpnas y filas -->
+    <record id="plan_view_tree" model="ir.ui.view">
     <field name="name">netcom.tree</field>
-    <field name="model">nas</field>
+    <field name="model">plan</field>
     <field name="arch" type="xml">
         <tree string="Channel">
             <field name="name"/>
-            <field name="ip_address"/>
-            <field name="secret"/>
+            <field name="groupname"/>
         </tree>
     </field>
 </record>
 
-    <record id="nas_view_form" model="ir.ui.view">
+    <record id="plan_view_form" model="ir.ui.view">
     <field name="name">planes.form</field>
-    <field name="model">nas</field>
+    <field name="model">plan</field>
     <field name="arch" type="xml">
         <form string="Servicios - Detalle">
             <sheet>
                 <div class="oe_title">
-                    <h1>
-                        <field name="name"/>
-                    </h1>
                     <group>
                         <field name="name"/>
-                        <field name="ip_address"/>
-                        <field name="secret"/>
-                        <field name="id_rad" />
-                        <field name="activo" />
+                        <field name="groupname"/>
                     </group>
                 </div>
                 <notebook>
                     <page string="Description">
                         <group>
-                            <field name="create_date" />
-                            <field name="write_date" />
-                            <field name="creationby" />
-                            <field name="updateby" />
+                            <field name="description" />
                         </group>
                         <div>
                             <!-- <button name="enviar_a_api" string="Enviar" type="object" icon="fa-external-link-square" class="oe_highlight" attrs="{'invisible': [('activo', '=', True)]}"/> -->
